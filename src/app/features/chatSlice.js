@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+const { VITE_API_ENDPOINT } = import.meta.env;
 
 const initialState = {
   status: "",
@@ -16,7 +17,7 @@ export const getConversations = createAsyncThunk(
   async (token, { rejectWithValue }) => {
     try {
       const { data } = await axios.get(
-        "http://localhost:4000/api/v1/conversation",
+        `${VITE_API_ENDPOINT}/api/v1/conversation`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -36,7 +37,7 @@ export const openCreateConversation = createAsyncThunk(
     const { token, receiverId } = values;
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/api/v1/conversation",
+        `${VITE_API_ENDPOINT}/api/v1/conversation`,
         { receiverId },
         {
           headers: {
@@ -57,7 +58,7 @@ export const getConversationMessages = createAsyncThunk(
     const { token, convoId } = values;
     try {
       const { data } = await axios.get(
-        "http://localhost:4000/api/v1/message/" + convoId,
+        `${VITE_API_ENDPOINT}/api/v1/message/${convoId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -76,7 +77,7 @@ export const sendMessage = createAsyncThunk(
     const { token, convoId, message, files } = values;
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/api/v1/message/",
+        `${VITE_API_ENDPOINT}/api/v1/message/`,
         { message, convoId, files },
         {
           headers: {

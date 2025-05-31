@@ -1,5 +1,5 @@
 {
-  "proxy": "http://localhost:4000",
+  "proxy": "https://whatsapp-fe1-0.vercel.app",
   "name": "whatsapp",
   "private": true,
   "version": "0.0.0",
