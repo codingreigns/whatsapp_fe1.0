@@ -4,6 +4,7 @@ import LoginPage from "./pages/Login";
 import Register from "./pages/Register";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SocketContext from "./context/SocketContext";
+import { useSelector } from "react-redux";
 const { VITE_API_ENDPOINT } = import.meta.env;
 // socket
 const socket = io(VITE_API_ENDPOINT.split("/api/v1")[0], {
@@ -12,15 +13,30 @@ const socket = io(VITE_API_ENDPOINT.split("/api/v1")[0], {
 });
 
 function App() {
-  // const { user } = useSelector((store) => store.user);
+  const { user } = useSelector((store) => store.user);
+  const { access_token: token } = user;
   return (
     <div className="dark">
       <SocketContext.Provider value={socket}>
         <Router>
           <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route exact path="/login" element={<LoginPage />} />
-            <Route exact path="/register" element={<Register />} />
+            <Route
+              exact
+              path="/"
+              element={
+                token ? <Home socket={socket} /> : <Navigate to="/login" />
+              }
+            />
+            <Route
+              exact
+              path="/login"
+              element={!token ? <Login /> : <Navigate to="/" />}
+            />
+            <Route
+              exact
+              path="/register"
+              element={!token ? <Register /> : <Navigate to="/" />}
+            />
           </Routes>
         </Router>
       </SocketContext.Provider>
