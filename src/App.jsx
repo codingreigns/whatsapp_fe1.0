@@ -35,7 +35,7 @@ function App() {
             <Route
               exact
               path="/login"
-              element={!token ? <Login /> : <Navigate to="/" />}
+              element={!token ? <LoginPage /> : <Navigate to="/" />}
             />
             <Route
               exact
