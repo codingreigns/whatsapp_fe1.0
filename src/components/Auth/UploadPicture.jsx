@@ -102,7 +102,7 @@ export default function ProfilePictureUpload({
             className="flex items-center justify-center px-4 py-2 mb-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 w-full"
           >
             <Upload size={18} className="mr-2" />
-            {preview ? "Change Photo" : "Upload Photo"}
+            {preview ? "Upload Photo" : "Select Photo"}
           </button>
 
           {/* Error Message */}
