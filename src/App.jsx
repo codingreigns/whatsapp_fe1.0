@@ -2,7 +2,12 @@ import { io } from "socket.io-client";
 import Home from "./pages/Home";
 import LoginPage from "./pages/Login";
 import Register from "./pages/Register";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import SocketContext from "./context/SocketContext";
 import { useSelector } from "react-redux";
 const { VITE_API_ENDPOINT } = import.meta.env;
