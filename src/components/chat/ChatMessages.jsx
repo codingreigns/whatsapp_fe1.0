@@ -19,25 +19,25 @@ const ChatMessages = ({ typing }) => {
       <div className="scrollbar overflow_scrollbar overflow-auto py-2 px-[6%] h-[550px]">
         {/* messages */}
         {messages &&
-          messages.map((message) => (
+          messages?.map((message) => (
             <>
               {/* message files */}
-              {message.files.length > 0
+              {message?.files?.length > 0
                 ? message.files.map((file) => (
                     <FileMessage
                       fileMessage={file}
                       message={message}
                       key={message._id}
-                      me={user._id === message.sender._id}
+                      me={user._id === message?.sender._id}
                     />
                   ))
                 : null}
               {/* message text */}
-              {message.message.length > 0 ? (
+              {message?.message?.length > 0 ? (
                 <Message
                   message={message}
                   key={message._id}
-                  me={user._id === message.sender._id}
+                  me={user._id === message?.sender._id}
                 />
               ) : null}
             </>

@@ -26,7 +26,7 @@ export const getConversations = createAsyncThunk(
       );
       return data;
     } catch (error) {
-      return rejectWithValue(error.response.data.message);
+      return rejectWithValue(error?.response?.data?.message);
     }
   }
 );
@@ -47,7 +47,7 @@ export const openCreateConversation = createAsyncThunk(
       );
       return data;
     } catch (error) {
-      return rejectWithValue(error.response.data.message);
+      return rejectWithValue(error?.response?.data?.message);
     }
   }
 );
@@ -67,7 +67,7 @@ export const getConversationMessages = createAsyncThunk(
       );
       return data;
     } catch (error) {
-      return rejectWithValue(error.response.data.message);
+      return rejectWithValue(error?.response?.data?.message);
     }
   }
 );
@@ -87,7 +87,7 @@ export const sendMessage = createAsyncThunk(
       );
       return data;
     } catch (error) {
-      return rejectWithValue(error.response.data.message);
+      return rejectWithValue(error?.response?.data?.message);
     }
   }
 );
