@@ -15,7 +15,7 @@ const SearchResult = ({ searchResults, setSearchResults }) => {
             <Contact
               setSearchResults={setSearchResults}
               contact={user}
-              key={user._id}
+              key={user?._id}
             />
           ))}
       </ul>

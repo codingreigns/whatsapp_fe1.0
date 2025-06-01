@@ -78,6 +78,9 @@ const RegisterForm = () => {
           {error && <p className="text-red-400">{error}</p>}
         </div>
         {/* form */}
+        <p className="text-center text-white">
+          please upload the picture first
+        </p>
         <form className="mt-3 space-y-3" onSubmit={handleSubmit(onSubmit)}>
           {/* profile pic */}
           <ProfilePictureUpload

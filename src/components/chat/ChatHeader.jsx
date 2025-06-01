@@ -1,10 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { DotsIcon, SearchLargeIcon } from "../../svg";
+import { getConversationName, getConversationPicture } from "../../utils/chats";
 
 const ChatHeader = ({ online }) => {
   const { activeConversation } = useSelector((store) => store.chat);
-  const { name, picture } = activeConversation;
+  const { user } = useSelector((store) => store.user);
+
+  console.log(activeConversation);
 
   return (
     <div className="h-[90px] dark:bg-darkBg2 flex items-center p-[8px] select-none ">
@@ -15,13 +18,13 @@ const ChatHeader = ({ online }) => {
           <button className="btn">
             <img
               className="w-full h-full rounded-full object-cover"
-              src={picture}
+              src={getConversationPicture(user, activeConversation.users)}
               alt="profile picture"
             />
           </button>
           <div className="flex flex-col">
             <h1 className="dark:text-white text-md font-bold capitalize">
-              {name.split(" ")[0]}
+              {getConversationName(user, activeConversation.users)}
             </h1>
             <span className="text-xs dark:text-darkSvg2">
               {online ? "online" : ""}
