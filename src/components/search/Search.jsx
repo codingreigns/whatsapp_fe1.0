@@ -13,7 +13,7 @@ const Search = ({ searchLength, setSearchResults }) => {
     if (e.target.value && e.key === "Enter") {
       try {
         const { data } = await axios.get(
-          `${VITE_API_ENDPOINT}/user?search=${e.target.value}`,
+          `${VITE_API_ENDPOINT}/api/v1/user?search=${e.target.value}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
